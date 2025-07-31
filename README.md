@@ -1,33 +1,33 @@
 # AI Agent Extension for VS Code
 
-> 🤖 A lightweight AI coding assistant extension built on top of the VS Code fork, providing intelligent code completions and an interactive chat interface.
+A lightweight AI coding assistant extension built on top of the VS Code fork, providing intelligent code completions and an interactive chat interface.
 
-## 🌟 Features
+## Features
 
-### 🧠 **AI-Powered Code Completions**
+### **AI-Powered Code Completions**
 - Intelligent code suggestions as you type
 - Context-aware completions based on file content and cursor position
 - Support for multiple programming languages (Python, JavaScript, TypeScript, JSON, etc.)
 - Non-intrusive integration that works alongside existing IntelliSense
 
-### 💬 **Interactive AI Chat Sidebar**
+### **Interactive AI Chat Sidebar**
 - Collapsible sidebar with AI assistant interface
 - Ask questions about your code, get explanations, and request help
 - File context awareness - the AI knows what you're working on
 - Code insertion and editing capabilities directly from chat responses
 
-### ⚡ **Lightweight & Modular**
+### **Lightweight & Modular**
 - Fully isolated VS Code extension with no core editor modifications
 - External AI agent backend for heavy lifting
 - Easy to maintain and rebase-compatible with upstream VS Code
 - Configurable API endpoints and completion settings
 
-### 🔮 **Future-Ready Architecture**
+### **Future-Ready Architecture**
 - **Designed for integration with Loro cloud platform** - upcoming features will allow AI agents to provision, modify, and query cloud infrastructure directly from your editor
 - WebSocket support for real-time communication
 - Extensible plugin architecture for custom prompts and actions
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 extensions/ai-agent/          # VS Code extension
@@ -48,7 +48,7 @@ scripts/                     # Development tools
 └── dev-link.sh             # Extension linking utility
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - Node.js (v16 or later)
@@ -83,7 +83,7 @@ make install && make dev
 make link
 ```
 
-## 🎯 Usage
+## Usage
 
 ### Code Completions
 
@@ -124,13 +124,13 @@ make link
 - `AI Agent: Clear Chat History` - Clear conversation history
 - `AI Agent: Toggle AI Completions` - Enable/disable completions
 
-## 🧪 Testing Completions
+## Testing Completions
 
 ### Manual Testing
-1. Start the development environment: `make dev`
+1. Start the development environment with `make dev`
 2. Open a Python file in VS Code
-3. Type `print.` and wait for AI suggestions
-4. Try typing `def my_function():` and press Enter
+3. Type `print.` and wait for AI suggestions to appear
+4. Try typing `def my_function():` and press Enter to see context-aware completions
 
 ### API Testing
 ```bash
@@ -144,7 +144,7 @@ make test-chat
 make health
 ```
 
-## 🛠️ Development
+## Development
 
 ### Available Make Targets
 
@@ -203,7 +203,7 @@ PORT=8000                    # Server port
 LOG_LEVEL=info              # Logging level
 ```
 
-## 🎨 Extending Prompts and Actions
+## Extending Prompts and Actions
 
 ### Custom Chat Actions
 
@@ -229,31 +229,31 @@ def _get_custom_language_completions(self, request: CompletionRequest):
     return [CompletionSuggestion(...)]
 ```
 
-## 🔮 Future Integration: Loro Cloud Platform
+## Future Integration: Loro Cloud Platform
 
 This AI agent is architected for seamless integration with the **Loro cloud platform**, enabling:
 
-### 🌐 **Infrastructure as Code from Your Editor**
+### **Infrastructure as Code from Your Editor**
 - Provision AWS, Azure, or GCP resources directly from VS Code
 - AI-guided infrastructure setup and configuration
 - Real-time cloud resource monitoring and management
 
-### 🚀 **Deployment Pipeline Integration**
+### **Deployment Pipeline Integration**
 - Deploy applications with AI-optimized configurations
 - Automated scaling recommendations based on code analysis
 - Integration with CI/CD pipelines
 
-### 📊 **Intelligent Cloud Insights**
+### **Intelligent Cloud Insights**
 - Cost optimization suggestions
 - Performance monitoring and alerts
 - Security scanning and compliance checks
 
-### 🔧 **Developer Experience Enhancement**
+### **Developer Experience Enhancement**
 - Natural language cloud operations ("deploy this to staging")
 - Context-aware infrastructure suggestions
 - Automated documentation generation for cloud resources
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Extension Not Loading
 1. Check that the extension is properly linked: `ls -la ~/.vscode/extensions/ai-agent`
@@ -275,7 +275,7 @@ This AI agent is architected for seamless integration with the **Loro cloud plat
 2. Verify backend is accepting connections
 3. Clear chat history and try again
 
-## 🤝 Contributing
+## Contributing
 
 1. **Fork** the repository
 2. **Create** a feature branch: `git checkout -b feature/amazing-feature`
@@ -291,11 +291,11 @@ This AI agent is architected for seamless integration with the **Loro cloud plat
 - Follow **TypeScript** and **Python** best practices
 - Update **documentation** for new features
 
-## 📄 License
+## License
 
 This project is part of the VS Code fork and follows the same licensing terms.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Built on the foundation of **Visual Studio Code**
 - Inspired by modern AI coding assistants
@@ -303,4 +303,4 @@ This project is part of the VS Code fork and follows the same licensing terms.
 
 ---
 
-**Ready to supercharge your coding experience?** Run `make install && make dev` and start coding with AI assistance! 🚀
+To get started with the AI Agent extension, run `make install && make dev` and begin coding with AI assistance.
