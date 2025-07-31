@@ -1,0 +1,16 @@
+/* VS Code theme variables */
+:root {
+	--vscode-font-family: var(--vscode-font-family);
+	--vscode-font-weight: var(--vscode-font-weight);
+	--vscode-font-size: var(--vscode-font-size);
+	--vscode-foreground: var(--vscode-foreground);
+	--vscode-background: var(--vscode-editor-background);
+}
+
+body {
+	color: var(--vscode-foreground);
+	background-color: var(--vscode-background);
+	font-family: var(--vscode-font-family);
+	font-weight: var(--vscode-font-weight);
+	font-size: var(--vscode-font-size);
+}

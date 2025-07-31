@@ -1,79 +1,306 @@
-# Visual Studio Code - Open Source ("Code - OSS")
+# AI Agent Extension for VS Code
 
-[![Feature Requests](https://img.shields.io/github/issues/microsoft/vscode/feature-request.svg)](https://github.com/microsoft/vscode/issues?q=is%3Aopen+is%3Aissue+label%3Afeature-request+sort%3Areactions-%2B1-desc)
-[![Bugs](https://img.shields.io/github/issues/microsoft/vscode/bug.svg)](https://github.com/microsoft/vscode/issues?utf8=✓&q=is%3Aissue+is%3Aopen+label%3Abug)
-[![Gitter](https://img.shields.io/badge/chat-on%20gitter-yellow.svg)](https://gitter.im/Microsoft/vscode)
+> 🤖 A lightweight AI coding assistant extension built on top of the VS Code fork, providing intelligent code completions and an interactive chat interface.
 
-## The Repository
+## 🌟 Features
 
-This repository ("`Code - OSS`") is where we (Microsoft) develop the [Visual Studio Code](https://code.visualstudio.com) product together with the community. Not only do we work on code and issues here, we also publish our [roadmap](https://github.com/microsoft/vscode/wiki/Roadmap), [monthly iteration plans](https://github.com/microsoft/vscode/wiki/Iteration-Plans), and our [endgame plans](https://github.com/microsoft/vscode/wiki/Running-the-Endgame). This source code is available to everyone under the standard [MIT license](https://github.com/microsoft/vscode/blob/main/LICENSE.txt).
+### 🧠 **AI-Powered Code Completions**
+- Intelligent code suggestions as you type
+- Context-aware completions based on file content and cursor position
+- Support for multiple programming languages (Python, JavaScript, TypeScript, JSON, etc.)
+- Non-intrusive integration that works alongside existing IntelliSense
 
-## Visual Studio Code
+### 💬 **Interactive AI Chat Sidebar**
+- Collapsible sidebar with AI assistant interface
+- Ask questions about your code, get explanations, and request help
+- File context awareness - the AI knows what you're working on
+- Code insertion and editing capabilities directly from chat responses
 
-<p align="center">
-  <img alt="VS Code in action" src="https://user-images.githubusercontent.com/35271042/118224532-3842c400-b438-11eb-923d-a5f66fa6785a.png">
-</p>
+### ⚡ **Lightweight & Modular**
+- Fully isolated VS Code extension with no core editor modifications
+- External AI agent backend for heavy lifting
+- Easy to maintain and rebase-compatible with upstream VS Code
+- Configurable API endpoints and completion settings
 
-[Visual Studio Code](https://code.visualstudio.com) is a distribution of the `Code - OSS` repository with Microsoft-specific customizations released under a traditional [Microsoft product license](https://code.visualstudio.com/License/).
+### 🔮 **Future-Ready Architecture**
+- **Designed for integration with Loro cloud platform** - upcoming features will allow AI agents to provision, modify, and query cloud infrastructure directly from your editor
+- WebSocket support for real-time communication
+- Extensible plugin architecture for custom prompts and actions
 
-[Visual Studio Code](https://code.visualstudio.com) combines the simplicity of a code editor with what developers need for their core edit-build-debug cycle. It provides comprehensive code editing, navigation, and understanding support along with lightweight debugging, a rich extensibility model, and lightweight integration with existing tools.
+## 🏗️ Architecture
 
-Visual Studio Code is updated monthly with new features and bug fixes. You can download it for Windows, macOS, and Linux on [Visual Studio Code's website](https://code.visualstudio.com/Download). To get the latest releases every day, install the [Insiders build](https://code.visualstudio.com/insiders).
+```
+extensions/ai-agent/          # VS Code extension
+├── src/
+│   ├── extension.ts         # Main extension entry point
+│   ├── completionProvider.ts # AI completion provider
+│   ├── webview.ts           # Chat interface
+│   └── utils/agentClient.ts # Backend communication
+├── webview-ui/              # Chat interface frontend
+└── package.json             # Extension manifest
 
-## Contributing
+agent/                       # AI backend server
+├── app.py                   # FastAPI server
+└── requirements.txt         # Python dependencies
 
-There are many ways in which you can participate in this project, for example:
+scripts/                     # Development tools
+├── dev.sh                   # Development environment setup
+└── dev-link.sh             # Extension linking utility
+```
 
-* [Submit bugs and feature requests](https://github.com/microsoft/vscode/issues), and help us verify as they are checked in
-* Review [source code changes](https://github.com/microsoft/vscode/pulls)
-* Review the [documentation](https://github.com/microsoft/vscode-docs) and make pull requests for anything from typos to additional and new content
+## 🚀 Quick Start
 
-If you are interested in fixing issues and contributing directly to the code base,
-please see the document [How to Contribute](https://github.com/microsoft/vscode/wiki/How-to-Contribute), which covers the following:
+### Prerequisites
+- Node.js (v16 or later)
+- Python (v3.8 or later)
+- VS Code (v1.74 or later)
 
-* [How to build and run from source](https://github.com/microsoft/vscode/wiki/How-to-Contribute)
-* [The development workflow, including debugging and running tests](https://github.com/microsoft/vscode/wiki/How-to-Contribute#debugging)
-* [Coding guidelines](https://github.com/microsoft/vscode/wiki/Coding-Guidelines)
-* [Submitting pull requests](https://github.com/microsoft/vscode/wiki/How-to-Contribute#pull-requests)
-* [Finding an issue to work on](https://github.com/microsoft/vscode/wiki/How-to-Contribute#where-to-contribute)
-* [Contributing to translations](https://aka.ms/vscodeloc)
+### Installation & Setup
 
-## Feedback
+1. **Install dependencies:**
+   ```bash
+   make install
+   ```
 
-* Ask a question on [Stack Overflow](https://stackoverflow.com/questions/tagged/vscode)
-* [Request a new feature](CONTRIBUTING.md)
-* Upvote [popular feature requests](https://github.com/microsoft/vscode/issues?q=is%3Aopen+is%3Aissue+label%3Afeature-request+sort%3Areactions-%2B1-desc)
-* [File an issue](https://github.com/microsoft/vscode/issues)
-* Connect with the extension author community on [GitHub Discussions](https://github.com/microsoft/vscode-discussions/discussions) or [Slack](https://aka.ms/vscode-dev-community)
-* Follow [@code](https://twitter.com/code) and let us know what you think!
+2. **Start development environment:**
+   ```bash
+   make dev
+   ```
 
-See our [wiki](https://github.com/microsoft/vscode/wiki/Feedback-Channels) for a description of each of these channels and information on some other available community-driven channels.
+3. **Link extension to VS Code:**
+   ```bash
+   make link
+   ```
 
-## Related Projects
+4. **Restart VS Code** to load the extension
 
-Many of the core components and extensions to VS Code live in their own repositories on GitHub. For example, the [node debug adapter](https://github.com/microsoft/vscode-node-debug) and the [mono debug adapter](https://github.com/microsoft/vscode-mono-debug) repositories are separate from each other. For a complete list, please visit the [Related Projects](https://github.com/microsoft/vscode/wiki/Related-Projects) page on our [wiki](https://github.com/microsoft/vscode/wiki).
+### Alternative Quick Setup
+```bash
+# One-liner setup
+make install && make dev
 
-## Bundled Extensions
+# In another terminal, link the extension
+make link
+```
 
-VS Code includes a set of built-in extensions located in the [extensions](extensions) folder, including grammars and snippets for many languages. Extensions that provide rich language support (code completion, Go to Definition) for a language have the suffix `language-features`. For example, the `json` extension provides coloring for `JSON` and the `json-language-features` extension provides rich language support for `JSON`.
+## 🎯 Usage
 
-## Development Container
+### Code Completions
 
-This repository includes a Visual Studio Code Dev Containers / GitHub Codespaces development container.
+1. **Enable completions** (enabled by default):
+   - Open VS Code settings (`Cmd/Ctrl + ,`)
+   - Search for "AI Agent"
+   - Ensure "Enable Completions" is checked
 
-* For [Dev Containers](https://aka.ms/vscode-remote/download/containers), use the **Dev Containers: Clone Repository in Container Volume...** command which creates a Docker volume for better disk I/O on macOS and Windows.
-  * If you already have VS Code and Docker installed, you can also click [here](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/microsoft/vscode) to get started. This will cause VS Code to automatically install the Dev Containers extension if needed, clone the source code into a container volume, and spin up a dev container for use.
+2. **Trigger completions** by typing:
+   - `.` (dot notation)
+   - `(` (function calls)
+   - `=` (assignments)
+   - Or just start typing - completions appear automatically
 
-* For Codespaces, install the [GitHub Codespaces](https://marketplace.visualstudio.com/items?itemName=GitHub.codespaces) extension in VS Code, and use the **Codespaces: Create New Codespace** command.
+3. **Customize completion behavior**:
+   - `aiAgent.completionDelay`: Delay before showing suggestions (default: 500ms)
+   - `aiAgent.maxCompletions`: Max number of suggestions (default: 5)
 
-Docker / the Codespace should have at least **4 Cores and 6 GB of RAM (8 GB recommended)** to run full build. See the [development container README](.devcontainer/README.md) for more information.
+### AI Chat Interface
 
-## Code of Conduct
+1. **Open the AI Assistant sidebar**:
+   - Click the robot icon in the activity bar
+   - Or use the command palette: `AI Agent: Open Chat`
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+2. **Start chatting**:
+   - Type questions about your code
+   - Ask for explanations or help with debugging
+   - Request code examples or snippets
 
-## License
+3. **Use file context**:
+   - Open a file and select code
+   - The AI will be aware of your current file and selection
+   - Ask questions like "What does this function do?" or "How can I improve this code?"
 
-Copyright (c) Microsoft Corporation. All rights reserved.
+### Commands
 
-Licensed under the [MIT](LICENSE.txt) license.
+- `AI Agent: Open Chat` - Open the chat interface
+- `AI Agent: Clear Chat History` - Clear conversation history
+- `AI Agent: Toggle AI Completions` - Enable/disable completions
+
+## 🧪 Testing Completions
+
+### Manual Testing
+1. Start the development environment: `make dev`
+2. Open a Python file in VS Code
+3. Type `print.` and wait for AI suggestions
+4. Try typing `def my_function():` and press Enter
+
+### API Testing
+```bash
+# Test completions endpoint
+make test-completions
+
+# Test chat endpoint
+make test-chat
+
+# Check backend health
+make health
+```
+
+## 🛠️ Development
+
+### Available Make Targets
+
+```bash
+make help          # Show all available commands
+make dev           # Start development environment (agent + extension watch)
+make build         # Build extension for production
+make agent         # Start AI agent backend only
+make install       # Install all dependencies
+make clean         # Clean build artifacts
+make test          # Run tests
+make lint          # Run linting checks
+make link          # Symlink extension to VS Code
+make unlink        # Remove extension symlink
+```
+
+### Development Workflow
+
+1. **Start development servers:**
+   ```bash
+   make dev
+   ```
+   This starts:
+   - AI agent backend on `http://localhost:8000`
+   - TypeScript compiler in watch mode
+
+2. **Link extension for testing:**
+   ```bash
+   make link
+   ```
+
+3. **Make changes and test:**
+   - Extension changes: TypeScript recompiles automatically
+   - Backend changes: Restart with `Ctrl+C` and `make agent`
+   - VS Code: Reload window (`Cmd/Ctrl + R`)
+
+4. **Debug:**
+   - Extension: Use VS Code's built-in debugger (F5)
+   - Backend: Check logs in terminal or visit `http://localhost:8000/health`
+
+### Configuration
+
+Extension settings in VS Code:
+```json
+{
+  "aiAgent.apiEndpoint": "http://localhost:8000",
+  "aiAgent.enableCompletions": true,
+  "aiAgent.completionDelay": 500,
+  "aiAgent.maxCompletions": 5
+}
+```
+
+Backend configuration via environment variables:
+```bash
+PORT=8000                    # Server port
+LOG_LEVEL=info              # Logging level
+```
+
+## 🎨 Extending Prompts and Actions
+
+### Custom Chat Actions
+
+To add new actions that appear in chat responses, modify the backend `process_chat_message` method in `agent/app.py`:
+
+```python
+actions.append({
+    "type": "custom_action",
+    "label": "Run Tests",
+    "data": {"command": "npm test"}
+})
+```
+
+Then handle the action in the frontend `webview-ui/main.js` and extension `src/webview.ts`.
+
+### Custom Completion Providers
+
+Add language-specific completions by modifying the `AgentBackend` class in `agent/app.py`:
+
+```python
+def _get_custom_language_completions(self, request: CompletionRequest):
+    # Add your custom completion logic
+    return [CompletionSuggestion(...)]
+```
+
+## 🔮 Future Integration: Loro Cloud Platform
+
+This AI agent is architected for seamless integration with the **Loro cloud platform**, enabling:
+
+### 🌐 **Infrastructure as Code from Your Editor**
+- Provision AWS, Azure, or GCP resources directly from VS Code
+- AI-guided infrastructure setup and configuration
+- Real-time cloud resource monitoring and management
+
+### 🚀 **Deployment Pipeline Integration**
+- Deploy applications with AI-optimized configurations
+- Automated scaling recommendations based on code analysis
+- Integration with CI/CD pipelines
+
+### 📊 **Intelligent Cloud Insights**
+- Cost optimization suggestions
+- Performance monitoring and alerts
+- Security scanning and compliance checks
+
+### 🔧 **Developer Experience Enhancement**
+- Natural language cloud operations ("deploy this to staging")
+- Context-aware infrastructure suggestions
+- Automated documentation generation for cloud resources
+
+## 🐛 Troubleshooting
+
+### Extension Not Loading
+1. Check that the extension is properly linked: `ls -la ~/.vscode/extensions/ai-agent`
+2. Restart VS Code completely
+3. Check the developer console: `Help > Toggle Developer Tools`
+
+### AI Agent Backend Issues
+1. Verify the backend is running: `curl http://localhost:8000/health`
+2. Check Python dependencies: `cd agent && source venv/bin/activate && pip list`
+3. Review backend logs in the terminal
+
+### Completions Not Working
+1. Check extension settings: `aiAgent.enableCompletions`
+2. Verify API endpoint: `aiAgent.apiEndpoint`
+3. Test the completions endpoint: `make test-completions`
+
+### Chat Interface Not Responding
+1. Check WebSocket connection in browser dev tools
+2. Verify backend is accepting connections
+3. Clear chat history and try again
+
+## 🤝 Contributing
+
+1. **Fork** the repository
+2. **Create** a feature branch: `git checkout -b feature/amazing-feature`
+3. **Commit** your changes: `git commit -m 'Add amazing feature'`
+4. **Push** to the branch: `git push origin feature/amazing-feature`
+5. **Open** a Pull Request
+
+### Development Guidelines
+
+- Keep the extension **modular** and **non-intrusive**
+- Ensure **rebase compatibility** with upstream VS Code
+- Add **tests** for new features
+- Follow **TypeScript** and **Python** best practices
+- Update **documentation** for new features
+
+## 📄 License
+
+This project is part of the VS Code fork and follows the same licensing terms.
+
+## 🙏 Acknowledgments
+
+- Built on the foundation of **Visual Studio Code**
+- Inspired by modern AI coding assistants
+- Designed for the future of cloud-native development
+
+---
+
+**Ready to supercharge your coding experience?** Run `make install && make dev` and start coding with AI assistance! 🚀

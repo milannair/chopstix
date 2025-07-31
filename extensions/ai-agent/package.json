@@ -1,0 +1,111 @@
+{
+  "name": "ai-agent",
+  "displayName": "AI Agent",
+  "description": "Lightweight AI coding assistant with completions and chat interface",
+  "version": "0.1.0",
+  "publisher": "chopstix",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other",
+    "Machine Learning"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "id": "aiAgent",
+          "name": "AI Assistant",
+          "when": "true"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "ai-agent-sidebar",
+          "title": "AI Assistant",
+          "icon": "$(robot)"
+        }
+      ]
+    },
+    "views": {
+      "ai-agent-sidebar": [
+        {
+          "type": "webview",
+          "id": "aiAgentChat",
+          "name": "Chat",
+          "when": "true"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "aiAgent.openChat",
+        "title": "Open AI Chat",
+        "icon": "$(comment-discussion)"
+      },
+      {
+        "command": "aiAgent.clearHistory",
+        "title": "Clear Chat History",
+        "icon": "$(clear-all)"
+      },
+      {
+        "command": "aiAgent.toggleCompletions",
+        "title": "Toggle AI Completions"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "aiAgent.clearHistory",
+          "when": "view == aiAgentChat",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "AI Agent",
+      "properties": {
+        "aiAgent.apiEndpoint": {
+          "type": "string",
+          "default": "http://localhost:8000",
+          "description": "AI agent backend API endpoint"
+        },
+        "aiAgent.enableCompletions": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable AI-powered code completions"
+        },
+        "aiAgent.completionDelay": {
+          "type": "number",
+          "default": 500,
+          "description": "Delay in ms before triggering completion suggestions"
+        },
+        "aiAgent.maxCompletions": {
+          "type": "number",
+          "default": 5,
+          "description": "Maximum number of completion suggestions to show"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@types/node": "16.x",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "axios": "^1.6.0"
+  }
+}
